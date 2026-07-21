@@ -1,0 +1,23 @@
+{
+  "name": "concesionario-interactivo",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Template de concesionario 2D/3D interactivo — React + Vite",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 5471",
+    "lint": "echo \"(placeholder) add eslint if desired\""
+  },
+  "dependencies": {
+    "framer-motion": "^12.42.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.7.0",
+    "vite": "^7.1.0"
+  }
+}

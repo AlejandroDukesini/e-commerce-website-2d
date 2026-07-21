@@ -1,0 +1,98 @@
+/* ============================================================
+   Vehicle card + catalog layout
+   ============================================================ */
+.vcard { display: flex; flex-direction: column; }
+
+.vcard__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(160deg,
+    hsl(var(--vh, 40) 16% 90%),
+    hsl(var(--vh, 40) 14% 80%));
+}
+:root[data-theme="dark"] .vcard__media,
+:root:not([data-theme="light"]) .vcard__media {
+  background: linear-gradient(160deg,
+    hsl(var(--vh, 40) 12% 18%),
+    hsl(var(--vh, 40) 10% 11%));
+}
+.vcard__media svg { width: 100%; height: 100%; }
+.vcard__badges {
+  position: absolute;
+  top: var(--sp-3);
+  left: var(--sp-3);
+  display: flex;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+.vcard__body { padding: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-3); flex: 1; }
+.vcard__brand { font-size: var(--fs-xs); font-weight: 700; letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted); }
+.vcard__title { font-size: var(--fs-lg); }
+.vcard__tagline { color: var(--text-soft); font-size: var(--fs-sm); }
+.vcard__specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-4);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  margin-top: auto;
+  padding-top: var(--sp-3);
+}
+.vcard__spec { display: inline-flex; align-items: center; gap: 6px; }
+.vcard__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--border);
+}
+.vcard__price { font-size: var(--fs-lg); font-weight: 700; color: var(--text); font-family: var(--font-display); }
+.vcard__price small { display: block; font-size: var(--fs-xs); font-weight: 500; color: var(--text-muted); }
+
+/* Catalog grid + filters */
+.catalog-layout { display: grid; grid-template-columns: 280px 1fr; gap: var(--sp-6); align-items: start; }
+.filters {
+  position: sticky;
+  top: 104px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.filters__group { display: flex; flex-direction: column; gap: var(--sp-2); }
+.filters__title { font-size: var(--fs-sm); font-weight: 700; }
+.vgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--sp-5); }
+.catalog-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-5);
+}
+.range { width: 100%; accent-color: var(--brand); }
+.chip-row { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+.chip {
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--border);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--text-soft);
+  transition: all var(--dur-fast) var(--ease);
+}
+.chip:hover { border-color: var(--brand); color: var(--brand); }
+.chip.is-active { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+.empty-state { text-align: center; padding: var(--sp-9) var(--sp-5); color: var(--text-muted); }
+
+@media (max-width: 860px) {
+  .catalog-layout { grid-template-columns: 1fr; }
+  .filters { position: static; }
+}

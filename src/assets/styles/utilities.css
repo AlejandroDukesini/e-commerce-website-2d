@@ -1,0 +1,71 @@
+/* ============================================================
+   Layout primitives + utilities (luxury)
+   ============================================================ */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--sp-6);
+}
+.container--narrow { max-width: var(--container-narrow); }
+
+.section { padding-block: var(--sp-9); position: relative; }
+.section--tight { padding-block: var(--sp-8); }
+.section--sunken { background: var(--bg-sunken); }
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-roman);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--accent-600);
+}
+:root[data-theme="dark"] .eyebrow,
+:root:not([data-theme="light"]) .eyebrow { color: var(--accent); }
+
+/* thin gold rule that often sits under an eyebrow */
+.rule {
+  width: 54px; height: 1px;
+  background: var(--accent);
+  margin-block: var(--sp-4);
+}
+.rule--center { margin-inline: auto; }
+
+.section-title {
+  font-size: var(--fs-2xl);
+  margin-top: var(--sp-4);
+  max-width: 20ch;
+  font-weight: 500;
+}
+.section-title--center { margin-inline: auto; text-align: center; }
+
+.lead {
+  font-size: var(--fs-md);
+  color: var(--text-soft);
+  max-width: 60ch;
+  margin-top: var(--sp-5);
+  font-weight: 400;
+}
+
+.stack > * + * { margin-top: var(--sp-4); }
+.grid { display: grid; gap: var(--sp-5); }
+.flex { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.text-center { text-align: center; }
+.mx-auto { margin-inline: auto; }
+
+/* Reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--dur-slow) var(--ease-lux), transform var(--dur-slow) var(--ease-lux);
+  will-change: opacity, transform;
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}
+
+.divider { height: 1px; background: var(--border); border: 0; }

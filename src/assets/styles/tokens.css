@@ -1,0 +1,132 @@
+/* ============================================================
+   Design tokens — LUXURY EDITION
+   Sober, editorial, high-status: ivory/graphite + champagne gold,
+   high-contrast serif display, straight corners, hairline borders.
+   ============================================================ */
+:root {
+  /* --- Brand palette --- */
+  --porcelain: #f4f1ea;   /* warm ivory */
+  --porcelain-2: #eae5da;
+  --ink: #121114;         /* near-black */
+  --ink-2: #1c1b1f;
+  --graphite: #2a2a2e;
+  --smoke: #6f6d70;
+  --hairline: #ddd7cb;    /* light hairline */
+
+  --gold: #a6813f;        /* champagne / bronze gold */
+  --gold-600: #8a6a2f;
+  --gold-100: #efe6d2;
+  --gold-glow: rgba(166, 129, 63, 0.22);
+
+  /* --- Semantic (light) --- */
+  --bg: #f6f3ec;
+  --bg-elevated: #fbf9f4;
+  --bg-sunken: #efeade;
+  --text: var(--ink);
+  --text-soft: #3a383c;
+  --text-muted: #75726f;
+  --border: var(--hairline);
+  --accent: var(--gold);
+  --accent-600: var(--gold-600);
+  --accent-100: var(--gold-100);
+  --brand: var(--ink);          /* solid dark for high-contrast buttons */
+  --brand-600: #000000;
+  --ring: rgba(166, 129, 63, 0.5);
+  --success: #4a6b4f;
+
+  /* --- Typography --- */
+  --font-display: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+  --font-roman: "Cinzel", "Cormorant Garamond", Georgia, serif; /* caps accents / brand */
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+
+  --fs-xs: 0.76rem;
+  --fs-sm: 0.9rem;
+  --fs-base: 1.02rem;
+  --fs-md: 1.2rem;
+  --fs-lg: 1.55rem;
+  --fs-xl: 2.1rem;
+  --fs-2xl: clamp(2.4rem, 4.2vw, 3.6rem);
+  --fs-3xl: clamp(3.2rem, 8vw, 6.4rem);
+
+  --lh-tight: 1.04;
+  --lh-snug: 1.28;
+  --lh-normal: 1.68;
+  --tracking-tight: -0.01em;
+  --tracking-caps: 0.28em;     /* wide luxury caps */
+  --tracking-wide: 0.16em;
+
+  /* --- Spacing (generous) --- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3.25rem;
+  --sp-8: 5rem;
+  --sp-9: 7.5rem;
+  --sp-10: 10rem;
+
+  /* --- Radius: straight, editorial (no friendly rounding) --- */
+  --r-sm: 0px;
+  --r-md: 1px;
+  --r-lg: 2px;
+  --r-pill: 0px;
+
+  /* --- Shadows: whisper-only, rely on hairlines + contrast --- */
+  --shadow-sm: 0 1px 0 rgba(18, 17, 20, 0.04);
+  --shadow-md: 0 10px 30px rgba(18, 17, 20, 0.08);
+  --shadow-lg: 0 30px 80px rgba(18, 17, 20, 0.14);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 200ms;
+  --dur: 460ms;
+  --dur-slow: 900ms;
+
+  --container: 1240px;
+  --container-narrow: 820px;
+}
+
+/* --- Dark theme: rich black + champagne --- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b0b0d;
+    --bg-elevated: #131316;
+    --bg-sunken: #08080a;
+    --text: #f2efe8;
+    --text-soft: #cbc7bf;
+    --text-muted: #8b8880;
+    --border: #262428;
+    --hairline: #2a282c;
+    --accent: #c6a15b;
+    --accent-600: #b08e4c;
+    --accent-100: #241f16;
+    --brand: #f2efe8;         /* light solid on dark */
+    --brand-600: #ffffff;
+    --ring: rgba(198, 161, 91, 0.55);
+    --shadow-sm: 0 1px 0 rgba(0,0,0,0.5);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.55);
+    --shadow-lg: 0 30px 80px rgba(0, 0, 0, 0.7);
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0b0b0d;
+  --bg-elevated: #131316;
+  --bg-sunken: #08080a;
+  --text: #f2efe8;
+  --text-soft: #cbc7bf;
+  --text-muted: #8b8880;
+  --border: #262428;
+  --hairline: #2a282c;
+  --accent: #c6a15b;
+  --accent-600: #b08e4c;
+  --accent-100: #241f16;
+  --brand: #f2efe8;
+  --brand-600: #ffffff;
+  --ring: rgba(198, 161, 91, 0.55);
+  --shadow-sm: 0 1px 0 rgba(0,0,0,0.5);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 30px 80px rgba(0, 0, 0, 0.7);
+}

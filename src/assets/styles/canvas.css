@@ -1,0 +1,154 @@
+/* ============================================================
+   Interactive canvas layers (scrollytelling + mini-game)
+   ============================================================ */
+
+/* ---- Scrollytelling ---- */
+.scrolly {
+  position: relative;
+  height: 300vh; /* scroll length that the sticky stage travels through */
+}
+.scrolly__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.scrolly__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.scrolly__caption {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: clamp(2rem, 8vh, 6rem);
+  text-align: center;
+  padding-inline: var(--sp-5);
+  pointer-events: none;
+}
+.scrolly__caption h2 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: #fff;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.35);
+}
+.scrolly__caption p {
+  color: rgba(255,255,255,0.9);
+  margin-top: var(--sp-3);
+  font-size: var(--fs-md);
+  text-shadow: 0 1px 16px rgba(0,0,0,0.4);
+}
+.scrolly__steps { position: relative; z-index: 1; }
+.scrolly__step { height: 100vh; }
+.scrolly__progress {
+  position: absolute;
+  top: 50%;
+  right: clamp(1rem, 3vw, 2.5rem);
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 2;
+}
+.scrolly__dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  transition: all var(--dur) var(--ease);
+}
+.scrolly__dot.is-active { background: #fff; transform: scale(1.5); }
+
+/* ---- Hover-texture ---- */
+.hovertex {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  cursor: pointer;
+  isolation: isolate;
+}
+.hovertex__canvas { width: 100%; height: 100%; display: block; }
+.hovertex__label {
+  position: absolute;
+  left: var(--sp-5);
+  bottom: var(--sp-5);
+  z-index: 2;
+  color: #fff;
+  pointer-events: none;
+}
+.hovertex__label h3 { color: #fff; font-size: var(--fs-lg); text-shadow: 0 2px 18px rgba(0,0,0,0.5); }
+.hovertex__label p { color: rgba(255,255,255,0.88); font-size: var(--fs-sm); text-shadow: 0 1px 12px rgba(0,0,0,0.5); }
+
+.hovertex-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-4);
+}
+.hovertex-grid > *:first-child { grid-row: span 2; }
+@media (max-width: 800px) {
+  .hovertex-grid { grid-template-columns: 1fr 1fr; }
+  .hovertex-grid > *:first-child { grid-row: auto; grid-column: span 2; }
+}
+
+/* ---- Mini-game ---- */
+.game {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+.game__canvas-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #16181c;
+  cursor: pointer;
+}
+.game__canvas-wrap:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.game__canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; }
+.game__overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: var(--sp-5);
+  background: color-mix(in srgb, #10141a 70%, transparent);
+  backdrop-filter: blur(3px);
+}
+.game__overlay h3 { color: #fff; font-size: var(--fs-xl); }
+.game__overlay p { color: rgba(255,255,255,0.85); margin: var(--sp-3) 0 var(--sp-5); max-width: 42ch; }
+.game__hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-5);
+  flex-wrap: wrap;
+}
+.game__stat { display: flex; flex-direction: column; }
+.game__stat b { font-size: var(--fs-lg); font-family: var(--font-display); }
+.game__stat span { font-size: var(--fs-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
+.game__hint { font-size: var(--fs-xs); color: var(--text-muted); }
+
+/* On-screen lane controls */
+.game__controls {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  padding: var(--sp-5);
+  pointer-events: none;
+}
+.game__ctrl {
+  pointer-events: auto;
+  width: 60px; height: 60px;
+  display: grid; place-items: center;
+  font-size: 1.4rem;
+  color: #fff;
+  background: rgba(18,18,20,0.5);
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(4px);
+  transition: background var(--dur-fast) var(--ease);
+}
+.game__ctrl:hover, .game__ctrl:active { background: var(--accent); }
+@media (min-width: 861px) { .game__controls { opacity: 0; } .game__canvas-wrap:hover .game__controls { opacity: 1; } }

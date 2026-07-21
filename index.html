@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0b0d" />
+
+    <!-- Luxury typography: high-contrast serif display + roman caps + clean body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cinzel:wght@500;600&family=Inter:wght@400;500;600&display=swap"
+    />
+
+    <!-- Primary SEO -->
+    <title>Autos del Camino — Concesionario de vehículos nuevos y seminuevos</title>
+    <meta
+      name="description"
+      content="Descubre tu próximo auto en Autos del Camino: SUVs, sedanes y eléctricos con financiación a tu medida. Vive la carretera con libertad, confianza y estilo."
+    />
+    <meta name="keywords" content="concesionario, autos, carros, SUV, sedán, eléctrico, híbrido, Colombia, financiación, vehículos nuevos" />
+    <meta name="author" content="Autos del Camino" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="http://localhost:5471/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Autos del Camino" />
+    <meta property="og:title" content="Autos del Camino — Tu próximo auto te espera" />
+    <meta property="og:description" content="SUVs, sedanes y eléctricos con financiación a tu medida. Vive la carretera con libertad." />
+    <meta property="og:url" content="http://localhost:5471/" />
+    <meta property="og:locale" content="es_CO" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Autos del Camino" />
+    <meta name="twitter:description" content="Tu próximo auto te espera. Financiación a tu medida." />
+
+    <!-- Perf: preconnect to API origin -->
+    <link rel="preconnect" href="http://localhost:8081" crossorigin />
+
+    <!-- Structured data: AutoDealer (schema.org) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AutoDealer",
+        "name": "Autos del Camino",
+        "description": "Concesionario de vehículos nuevos y seminuevos con financiación a la medida.",
+        "url": "http://localhost:5471/",
+        "image": "http://localhost:5471/og-cover.jpg",
+        "priceRange": "$$",
+        "currenciesAccepted": "COP",
+        "paymentAccepted": "Cash, Credit Card, Financing",
+        "areaServed": "CO",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Av. de la Libertad 123",
+          "addressLocality": "Bogotá",
+          "addressRegion": "Cundinamarca",
+          "addressCountry": "CO"
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>Necesitas habilitar JavaScript para explorar el catálogo interactivo de Autos del Camino.</noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
