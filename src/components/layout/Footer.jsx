@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { ManageCookiesLink } from '../consent/ManageCookiesLink';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -46,7 +47,9 @@ export function Footer() {
 
         <div className="footer__bottom">
           <span>© {year} Autos del Camino. Todos los derechos reservados.</span>
-          <span>Hecho con pasión por la carretera · Template MIT</span>
+          <span>
+            <ManageCookiesLink className="cookie-manage-link" /> · Hecho con pasión por la carretera · Template MIT
+          </span>
         </div>
       </div>
     </footer>

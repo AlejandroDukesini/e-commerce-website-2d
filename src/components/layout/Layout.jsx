@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
+import { CookieConsent } from '../consent/CookieConsent';
 
 /** App shell: fixed chrome (navbar/footer) wrapping the routed page. */
 export function Layout() {
@@ -12,6 +13,7 @@ export function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <CookieConsent />
     </>
   );
 }
