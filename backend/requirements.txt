@@ -3,7 +3,9 @@ uvicorn[standard]==0.34.0
 SQLAlchemy==2.0.36
 pydantic==2.10.4
 pydantic-settings==2.7.1
-python-jose[cryptography]==3.3.0
+# 3.4.0 fixes CVE-2024-33663 (algorithm confusion) and CVE-2024-33664
+# (JWE decompression bomb / DoS) present in 3.3.0.
+python-jose[cryptography]==3.4.0
 bcrypt==4.2.1
 python-multipart==0.0.20
 slowapi==0.1.9

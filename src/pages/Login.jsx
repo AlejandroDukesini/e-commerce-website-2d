@@ -4,13 +4,13 @@ import { Button } from '../components/ui/Button';
 import { useAuth } from '../context/AuthContext';
 import { HeroScene } from '../components/home/HeroScene';
 
-const ROLES = [
-  { value: 'cliente', label: 'Cliente' },
-  { value: 'empleado', label: 'Empleado' },
-  { value: 'gerente', label: 'Gerente' },
-  { value: 'desarrollador', label: 'Desarrollador' },
-];
-
+// SECURITY: the "tipo de cuenta" selector that used to live here let anyone
+// self-register as `desarrollador` (maximum privilege) — the client simply
+// chose its own role and the API trusted it. The backend now assigns
+// `cliente` to every self-registration and rejects a `role` in the body, so
+// the control is gone from the form as well: leaving it would only render a
+// choice the server ignores. The four roles remain fully explorable through
+// the demo accounts below.
 const DEMOS = [
   { role: 'Cliente', email: 'cliente@demo.com', password: 'cliente1234' },
   { role: 'Empleado', email: 'empleado@demo.com', password: 'empleado1234' },
@@ -20,7 +20,7 @@ const DEMOS = [
 
 export function Login() {
   const [mode, setMode] = useState('login'); // login | register
-  const [form, setForm] = useState({ full_name: '', email: '', password: '', role: 'cliente' });
+  const [form, setForm] = useState({ full_name: '', email: '', password: '' });
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const { login, register } = useAuth();
@@ -97,12 +97,10 @@ export function Login() {
           </div>
 
           {mode === 'register' && (
-            <div className="field">
-              <label className="field__label" htmlFor="role">Tipo de cuenta</label>
-              <select id="role" className="select" value={form.role} onChange={(e) => set({ role: e.target.value })}>
-                {ROLES.map((r) => <option key={r.value} value={r.value}>{r.label}</option>)}
-              </select>
-            </div>
+            <p className="auth__hint" style={{ color: 'var(--text-muted)', fontSize: 'var(--fs-sm)' }}>
+              Las cuentas nuevas se crean como <b>Cliente</b>. Los roles internos
+              (empleado, gerente, desarrollador) los asigna un administrador.
+            </p>
           )}
 
           <Button type="submit" variant="primary" size="lg" block disabled={busy}>

@@ -1,11 +1,24 @@
 node_modules/
 dist/
-.env.local
 *.log
 .DS_Store
+
+# --- Secrets / local environment ---------------------------------------
+# Ignore every .env variant by default and re-allow only the committed
+# templates. Previously only `.env.local` was ignored, so a developer adding
+# a real key to `.env` would have committed it silently.
+.env
+.env.*
+!.env.example
+!*.env.example
 
 # backend
 backend/__pycache__/
 backend/**/__pycache__/
 backend/.env
 backend/database.db
+
+# --- Security artefacts -------------------------------------------------
+# Internal audit report: names unpatched weaknesses and is a roadmap for an
+# attacker. Keep it out of the repository.
+cibersegurity.txt

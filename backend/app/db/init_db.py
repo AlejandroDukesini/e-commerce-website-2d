@@ -2,6 +2,8 @@
 
 Idempotent: safe to call on every startup — existing users are left alone.
 """
+import logging
+
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
@@ -11,6 +13,8 @@ from app.db.database import Base, SessionLocal, engine
 from app.models.roles import Role
 from app.models.user import User
 from app.models.vehicle import Vehicle
+
+logger = logging.getLogger("security")
 
 # email -> (full_name, password, role)
 _DEMO_USERS = {
@@ -80,6 +84,15 @@ def init_db() -> None:
     # Import side-effect: ensures models are registered on Base before create_all.
     Base.metadata.create_all(bind=engine)
     with SessionLocal() as db:
-        if settings.seed_demo_users:
+        # Belt-and-braces: Settings already refuses to start with
+        # SEED_DEMO_USERS=true outside development, but this is the code path
+        # that would actually create a `desarrollador` account whose password
+        # is published in the README — so it re-checks the environment itself.
+        if settings.seed_demo_users and not settings.is_production:
             _seed_users(db)
+            logger.warning(
+                "event=db.seed.demo_users_created count=%d "
+                "detail=\"cuentas con contrasenas publicas; solo desarrollo\"",
+                len(_DEMO_USERS),
+            )
         _seed_vehicles(db)

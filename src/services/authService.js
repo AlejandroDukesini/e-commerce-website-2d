@@ -7,8 +7,11 @@ export const authService = {
     return data.user;
   },
 
-  async register({ full_name, email, password, role }) {
-    const data = await api.post('/auth/register', { full_name, email, password, role });
+  // SECURITY: `role` is intentionally not sent and not accepted. The server
+  // assigns `cliente` to every self-registration; it rejects a role in the
+  // body outright, so forwarding one here would just produce a 422.
+  async register({ full_name, email, password }) {
+    const data = await api.post('/auth/register', { full_name, email, password });
     tokenStore.set(data.access_token);
     return data.user;
   },

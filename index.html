@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0b0b0d" />
+    <!-- Don't leak full URLs (ids/filters) to third-party origins like fonts/GA. -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <!-- The production Content-Security-Policy is injected at build time by
+         vite.config.js and should also be sent as a real header by the host. -->
 
     <!-- Luxury typography: high-contrast serif display + roman caps + clean body -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
